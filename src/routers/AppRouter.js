@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
 import {
     BrowserRouter as Router,
-    Switch,
-    Route
+    Switch
 } from 'react-router-dom';
 import PrivateRoute from '../routers/PrivateRoute';
 import { AuthContext } from '../auth/AuthContext';
+import PublicRoute from '../routers/PublicRoute';
 
 
 import { LoginScreen } from '../components/login/LoginScreen';
@@ -20,7 +20,7 @@ export const AppRouter = () => {
         <Router>
             <div>
                 <Switch>
-                    <Route exact path="/login" component={LoginScreen} />
+                    <PublicRoute exact path="/login" isAutenticated={logged} component={LoginScreen} />
 
                     <PrivateRoute path="/" isAutenticated={logged} component={DashboardRoutes} />
                 </Switch>
