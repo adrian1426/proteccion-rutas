@@ -3,6 +3,9 @@ import { Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const PrivateRoute = ({ isAutenticated, component: Component, ...resto }) => {
+
+  localStorage.setItem('lastPath', resto.location.pathname);
+
   return (
     <Route
       {...resto}
